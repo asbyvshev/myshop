@@ -26,16 +26,16 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/{id}")
-    public String getOneProduct(Model model, @PathVariable String id) throws ProductNotFoundException {
+    public String getOneProduct(Model model, @PathVariable Long id) throws ProductNotFoundException {
 
         // TODO ДЗ - утилита, которая будет проверять UUID
 
-        model.addAttribute("product", productService.findOneById(UUID.fromString(id)));
+        model.addAttribute("product", productService.findOneById(id));
         return "product";
     }
 
     @GetMapping(value = "/images/{id}", produces = MediaType.IMAGE_PNG_VALUE)
-    public @ResponseBody byte[] getImage(@PathVariable String id) {
+    public @ResponseBody byte[] getImage(@PathVariable Long id) {
 
         // TODO ДЗ - сделать поддержку множества картинок
 

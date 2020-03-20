@@ -11,6 +11,6 @@ import java.util.UUID;
 public abstract class PersistableEntity {
 
     @Id
-    private int id;
+    private Long id;
 
 }

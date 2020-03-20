@@ -16,9 +16,9 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public Product findOneById(UUID uuid) throws ProductNotFoundException {
-        return productRepository.findById(uuid).orElseThrow(
-            () -> new ProductNotFoundException("Oops! Product " + uuid + " wasn't found!")
+    public Product findOneById(Long id) throws ProductNotFoundException {
+        return productRepository.findById(id).orElseThrow(
+            () -> new ProductNotFoundException("Oops! Product " + id + " wasn't found!")
         );
     }
 

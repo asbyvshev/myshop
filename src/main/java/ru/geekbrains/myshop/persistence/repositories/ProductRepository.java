@@ -7,7 +7,7 @@ import ru.geekbrains.myshop.persistence.entities.enums.ProductCategory;
 import java.util.List;
 import java.util.UUID;
 
-public interface ProductRepository extends JpaRepository<Product, UUID> {
+public interface ProductRepository extends JpaRepository<Product,  Long> {
     List<Product> findAll();
     List<Product> findAllByCategory(ProductCategory category);
 }

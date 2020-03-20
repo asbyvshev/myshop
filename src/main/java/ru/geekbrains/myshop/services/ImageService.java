@@ -21,13 +21,13 @@ public class ImageService {
 
     private final ImageRepository imageRepository;
 
-    private String getImageForSpecificProduct(UUID id) {
+    private String getImageForSpecificProduct(Long id) {
         return imageRepository.obtainImageNameByProductId(id);
     }
 
-    public BufferedImage loadFileAsResource(String id) throws IOException {
+    public BufferedImage loadFileAsResource(Long id) throws IOException {
         try {
-            String imageName = getImageForSpecificProduct(UUID.fromString(id));
+            String imageName = getImageForSpecificProduct(id);
             Resource resource = new ClassPathResource("/static/images/" + imageName);
             if (resource.exists()) {
                 return ImageIO.read(resource.getFile());

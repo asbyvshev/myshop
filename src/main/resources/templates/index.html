@@ -23,38 +23,38 @@
                     <th>Дата добавления</th>
                 </tr>
                 </thead>
-<!--                <tbody>-->
-<!--                    <tr th:each="product, iterator : ${products}">-->
-<!--                        &lt;!&ndash;/*@thymesVar id="product" type="ru.geekbrains.supershop.persistence.entities.Product"*/&ndash;&gt;-->
-<!--                        <span th:if="${product.available}">-->
-<!--                            <td th:text="${iterator.index + 1}"/>-->
-<!--                            <td>-->
-<!--                                <a th:href="@{'/products/' + ${product.id}}">[[ ${product.title} ]]</a>-->
-<!--                            </td>-->
-<!--                            <td>-->
-<!--                                <div>-->
-<!--                                    <img th:src="@{'/products/images/' + ${product.id}}" alt="" width="50px" height="50px" />-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                            <td th:text="${product.description}"/>-->
-<!--                            <td th:text="${product.price}"/>-->
-<!--                            <td th:text="${#dates.format(product.added, 'dd-MM-yyyy')}"/>-->
-<!--                        </span>-->
-<!--                    </tr>-->
-<!--                </tbody>-->
+                <tbody>
+                    <tr th:each="product, iterator : ${products}">
+                        <!--/*@thymesVar id="product" type="ru.geekbrains.myshop.persistence.entities.Product"*/-->
+                        <span th:if="${product.available}">
+                            <td th:text="${iterator.index + 1}"/>
+                            <td>
+                                <a th:href="@{'/products/' + ${product.id}}">[[ ${product.title} ]]</a>
+                            </td>
+                            <td>
+                                <div>
+                                    <img th:src="@{'/products/images/' + ${product.id}}" alt="" width="50px" height="50px" />
+                                </div>
+                            </td>
+                            <td th:text="${product.description}"/>
+                            <td th:text="${product.price}"/>
+                            <td th:text="${#dates.format(product.added, 'dd-MM-yyyy')}"/>
+                        </span>
+                    </tr>
+                </tbody>
             </table>
             <hr>
             Категория продуктов:
-<!--            <form th:action="@{/}" method="get">-->
-<!--                <select name="category">-->
-<!--                    <option th:text="'Не выбрано'" th:value="null"/>-->
-<!--                    <option th:each="category : ${T(ru.geekbrains.supershop.persistence.entities.enums.ProductCategory).values()}"-->
-<!--                            th:value="${category.ordinal()}"-->
-<!--                            th:text="${category.name}"-->
-<!--                    />-->
-<!--                </select>-->
-<!--                <button type="submit">применить</button>-->
-<!--            </form>-->
+            <form th:action="@{/}" method="get">
+                <select name="category">
+                    <option th:text="'Не выбрано'" th:value="null"/>
+                    <option th:each="category : ${T(ru.geekbrains.myshop.persistence.entities.enums.ProductCategory).values()}"
+                            th:value="${category.ordinal()}"
+                            th:text="${category.name}"
+                    />
+                </select>
+                <button type="submit">применить</button>
+            </form>
         </div>
     </body>
 </html>
