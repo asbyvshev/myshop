@@ -6,6 +6,7 @@ import ru.geekbrains.myshop.persistence.entities.utils.PersistableEntity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -31,5 +32,14 @@ public class Product extends PersistableEntity {
     @OneToOne
     @JoinColumn(name = "image")
     private Image image;
+
+    @ManyToMany
+    @JoinTable(
+            name = "product_images",
+            joinColumns = @JoinColumn(name = "id_product"),
+            inverseJoinColumns = @JoinColumn(name = "id_image")
+    )
+    private List<Image> images;
+
 
 }

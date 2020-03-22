@@ -21,12 +21,13 @@
                     <th>Описание</th>
                     <th>Цена</th>
                     <th>Дата добавления</th>
+                    <th>Наличие</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr th:each="product, iterator : ${products}">
                         <!--/*@thymesVar id="product" type="ru.geekbrains.myshop.persistence.entities.Product"*/-->
-                        <span th:if="${product.available}">
+<!--                        <span th:if="${product.available}">-->
                             <td th:text="${iterator.index + 1}"/>
                             <td>
                                 <a th:href="@{'/products/' + ${product.id}}">[[ ${product.title} ]]</a>
@@ -39,7 +40,11 @@
                             <td th:text="${product.description}"/>
                             <td th:text="${product.price}"/>
                             <td th:text="${#dates.format(product.added, 'dd-MM-yyyy')}"/>
-                        </span>
+                            <td>
+                                <span style="color:green;" th:if="${product.available}">Есть</span>
+                                <span style="color:red;" th:unless="${product.available}">Нет</span>
+                            </td>
+<!--                        </span>-->
                     </tr>
                 </tbody>
             </table>
@@ -53,6 +58,12 @@
                             th:text="${category.name}"
                     />
                 </select>
+                <button type="submit">применить</button>
+            </form>
+            <hr>
+            Наличие:
+
+
                 <button type="submit">применить</button>
             </form>
         </div>

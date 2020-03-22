@@ -31,6 +31,7 @@ public class ProductController {
         // TODO ДЗ - утилита, которая будет проверять UUID
 
         model.addAttribute("product", productService.findOneById(id));
+//        System.out.println(productService.findOneById(id).getImages());
         return "product";
     }
 
