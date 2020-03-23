@@ -38,8 +38,6 @@ public class ProductController {
     @GetMapping(value = "/images/{id}", produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody byte[] getImage(@PathVariable Long id) {
 
-        // TODO ДЗ - сделать поддержку множества картинок
-
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ImageIO.write(imageService.loadFileAsResource(id), "png", byteArrayOutputStream);

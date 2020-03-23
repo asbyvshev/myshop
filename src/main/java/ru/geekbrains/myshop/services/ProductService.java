@@ -26,4 +26,15 @@ public class ProductService {
         return category == null ? productRepository.findAll() : productRepository.findAllByCategory(ProductCategory.values()[category]);
     }
 
+    public List<Product> findAll(Boolean available) {
+        return available == null ? productRepository.findAll() : productRepository.findAllByAvailable(available);
+    }
+
+    public List<Product> findAll(){
+        return productRepository.findAll();
+    }
+
+    public List<Product> findAll(Integer category, Boolean available){
+        return productRepository.findAllByCategoryAndAvailable(ProductCategory.values()[category], available);
+    }
 }

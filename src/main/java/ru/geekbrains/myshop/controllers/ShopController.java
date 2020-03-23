@@ -15,11 +15,19 @@ public class ShopController {
     private final ProductService productService;
 //это не JSON
     @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
-    public String index(Model model, @RequestParam(required = false) Integer category) {
+    public String index(Model model,
+                        @RequestParam(required = false) Integer category,
+                        @RequestParam(required = false) Boolean available) {
+        if (category != null && available != null) {
+            model.addAttribute("products", productService.findAll(category,available));
+        } else if (category == null && available == null) {
+            model.addAttribute("products", productService.findAll());
+            } else if (category == null) {
+                model.addAttribute("products", productService.findAll(available));
+                } else {
+                model.addAttribute("products", productService.findAll(category));
+                }
 
-        //TODO сделать фильтр, который будет выводить фильтровать продукты по доступности.
-
-        model.addAttribute("products", productService.findAll(category));
         return "index";
     }
 

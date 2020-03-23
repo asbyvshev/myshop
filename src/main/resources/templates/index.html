@@ -49,21 +49,23 @@
                 </tbody>
             </table>
             <hr>
-            Категория продуктов:
-            <form th:action="@{/}" method="get">
-                <select name="category">
+            <form class="form-horizontal" th:action="@{/}" method="get">
+                <label for="category">Категория продуктов:</label>
+                <select id="category" name="category">
                     <option th:text="'Не выбрано'" th:value="null"/>
                     <option th:each="category : ${T(ru.geekbrains.myshop.persistence.entities.enums.ProductCategory).values()}"
                             th:value="${category.ordinal()}"
                             th:text="${category.name}"
                     />
                 </select>
-                <button type="submit">применить</button>
-            </form>
-            <hr>
-            Наличие:
-
-
+                <br>
+                <label for="available">Наличие:</label>
+                <select id="available" name="available">
+                    <option th:text="'Не выбрано'" th:value="null"/>
+                    <option th:text="'Есть'" th:value="true"/>
+                    <option th:text="'Нет'" th:value="false"/>
+                </select>
+                <br>
                 <button type="submit">применить</button>
             </form>
         </div>

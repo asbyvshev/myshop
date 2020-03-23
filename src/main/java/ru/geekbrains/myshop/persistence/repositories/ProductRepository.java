@@ -10,4 +10,6 @@ import java.util.UUID;
 public interface ProductRepository extends JpaRepository<Product,  Long> {
     List<Product> findAll();
     List<Product> findAllByCategory(ProductCategory category);
+    List<Product> findAllByAvailable(Boolean available);
+    List<Product> findAllByCategoryAndAvailable(ProductCategory category, Boolean available);
 }
