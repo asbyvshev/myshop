@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="EN">
+    <head>
+        <meta charset="utf-8"/>
+        <title>SuperShop</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+
+            <div style="text-align: center;">
+                <h1>Super Shop</h1>
+            </div>
+
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Наименование</th>
+                    <th>Картинка</th>
+                    <th>Описание</th>
+                    <th>Цена</th>
+                    <th>Дата добавления</th>
+                    <th>Наличие</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product, iterator : ${products}">
+                        <!--/*@thymesVar id="product" type="ru.geekbrains.myshop.persistence.entities.Product"*/-->
+<!--                        <span th:if="${product.available}">-->
+                            <td th:text="${iterator.index + 1}"/>
+                            <td>
+                                <a th:href="@{'/products/' + ${product.id}}">[[ ${product.title} ]]</a>
+                            </td>
+                            <td>
+                                <div>
+                                    <img th:src="@{'/products/images/' + ${product.id}}" alt="" width="50px" height="50px" />
+                                </div>
+                            </td>
+                            <td th:text="${product.description}"/>
+                            <td th:text="${product.price}"/>
+                            <td th:text="${#dates.format(product.added, 'dd-MM-yyyy')}"/>
+                            <td>
+                                <span style="color:green;" th:if="${product.available}">Есть</span>
+                                <span style="color:red;" th:unless="${product.available}">Нет</span>
+                            </td>
+<!--                        </span>-->
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <form class="form-horizontal" th:action="@{/}" method="get">
+                <label for="category">Категория продуктов:</label>
+                <select id="category" name="category">
+                    <option th:text="'Не выбрано'" th:value="null"/>
+                    <option th:each="category : ${T(ru.geekbrains.myshop.persistence.entities.enums.ProductCategory).values()}"
+                            th:value="${category.ordinal()}"
+                            th:text="${category.name}"
+                    />
+                </select>
+                <br>
+                <label for="available">Наличие:</label>
+                <select id="available" name="available">
+                    <option th:text="'Не выбрано'" th:value="null"/>
+                    <option th:text="'Есть'" th:value="true"/>
+                    <option th:text="'Нет'" th:value="false"/>
+                </select>
+                <br>
+                <button type="submit">применить</button>
+            </form>
+        </div>
+    </body>
+</html>
