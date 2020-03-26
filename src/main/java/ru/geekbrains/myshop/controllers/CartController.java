@@ -1,4 +1,4 @@
-package ru.geekbrains.myshop.controllers.controllers1;
+package ru.geekbrains.myshop.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.supershop.beans.Cart;
-import ru.geekbrains.supershop.services.ProductService;
+import ru.geekbrains.myshop.beans.Cart;
+import ru.geekbrains.myshop.services.ProductService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,13 +22,13 @@ public class CartController {
     private final ProductService productService;
 
     @GetMapping("/add/{id}")
-    public void addProductToCart(@PathVariable UUID id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void addProductToCart(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws Exception {
         cart.add(productService.findOneById(id));
         response.sendRedirect(request.getHeader("referer"));
     }
 
     @GetMapping("/remove/{id}")
-    public String removeProductFromCart(@PathVariable UUID id) {
+    public String removeProductFromCart(@PathVariable Long id) {
         cart.removeByProductId(id);
         return "redirect:/cart";
     }

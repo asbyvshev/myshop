@@ -1,8 +1,8 @@
-package ru.geekbrains.myshop.persistence.persistence1.entities;
+package ru.geekbrains.myshop.persistence.entities;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ru.geekbrains.supershop.persistence.entities.utils.PersistableEntity;
+import ru.geekbrains.myshop.persistence.entities.utils.PersistableEntity;
 
 import javax.persistence.*;
 import java.util.List;

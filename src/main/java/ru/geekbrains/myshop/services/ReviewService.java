@@ -1,12 +1,12 @@
-package ru.geekbrains.myshop.services.services1;
+package ru.geekbrains.myshop.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.geekbrains.supershop.persistence.entities.Product;
-import ru.geekbrains.supershop.persistence.entities.Review;
-import ru.geekbrains.supershop.persistence.entities.Shopuser;
-import ru.geekbrains.supershop.persistence.repositories.ReviewRepository;
+import ru.geekbrains.myshop.persistence.entities.Product;
+import ru.geekbrains.myshop.persistence.entities.Review;
+import ru.geekbrains.myshop.persistence.entities.Shopuser;
+import ru.geekbrains.myshop.persistence.repositories.ReviewRepository;
 
 import java.util.List;
 import java.util.Optional;

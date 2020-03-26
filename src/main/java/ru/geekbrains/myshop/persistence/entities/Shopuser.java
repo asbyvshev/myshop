@@ -1,10 +1,10 @@
-package ru.geekbrains.myshop.persistence.persistence1.entities;
+package ru.geekbrains.myshop.persistence.entities;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.geekbrains.supershop.persistence.entities.enums.Role;
-import ru.geekbrains.supershop.persistence.entities.utils.PersistableEntity;
+import ru.geekbrains.myshop.persistence.entities.enums.Role;
+import ru.geekbrains.myshop.persistence.entities.utils.PersistableEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

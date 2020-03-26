@@ -1,4 +1,4 @@
-package ru.geekbrains.myshop.persistence.persistence1.pojo;
+package ru.geekbrains.myshop.persistence.pojo;
 
 import lombok.Data;
 
@@ -8,5 +8,5 @@ import java.util.UUID;
 public class ReviewPojo {
     private String captchaCode;
     private String commentary;
-    private UUID productId;
+    private Long productId;
 }

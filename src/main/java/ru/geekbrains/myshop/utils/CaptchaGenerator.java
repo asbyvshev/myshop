@@ -1,4 +1,4 @@
-package ru.geekbrains.myshop.utils.utils1;
+package ru.geekbrains.myshop.utils;
 
 import org.springframework.stereotype.Component;
 

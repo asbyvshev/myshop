@@ -1,8 +1,8 @@
-package ru.geekbrains.myshop.persistence.persistence1.repositories;
+package ru.geekbrains.myshop.persistence.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.geekbrains.supershop.persistence.entities.Shopuser;
+import ru.geekbrains.myshop.persistence.entities.Shopuser;
 
 import java.util.UUID;
 

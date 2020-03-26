@@ -1,4 +1,4 @@
-package ru.geekbrains.myshop.services.services1;
+package ru.geekbrains.myshop.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,9 +8,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.geekbrains.supershop.persistence.entities.Shopuser;
-import ru.geekbrains.supershop.persistence.entities.enums.Role;
-import ru.geekbrains.supershop.persistence.repositories.ShopuserRepository;
+import ru.geekbrains.myshop.persistence.entities.Shopuser;
+import ru.geekbrains.myshop.persistence.entities.enums.Role;
+import ru.geekbrains.myshop.persistence.repositories.ShopuserRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;

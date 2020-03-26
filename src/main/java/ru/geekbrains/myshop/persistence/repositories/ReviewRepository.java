@@ -1,9 +1,9 @@
-package ru.geekbrains.myshop.persistence.persistence1.repositories;
+package ru.geekbrains.myshop.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.geekbrains.supershop.persistence.entities.Product;
-import ru.geekbrains.supershop.persistence.entities.Review;
-import ru.geekbrains.supershop.persistence.entities.Shopuser;
+import ru.geekbrains.myshop.persistence.entities.Product;
+import ru.geekbrains.myshop.persistence.entities.Review;
+import ru.geekbrains.myshop.persistence.entities.Shopuser;
 
 import java.util.List;
 import java.util.Optional;

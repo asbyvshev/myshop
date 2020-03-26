@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
-import ru.geekbrains.supershop.persistence.entities.CartRecord;
-import ru.geekbrains.supershop.persistence.entities.Product;
+import ru.geekbrains.myshop.persistence.entities.CartRecord;
+import ru.geekbrains.myshop.persistence.entities.Product;
 
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
@@ -47,7 +47,7 @@ public class Cart implements Serializable {
         recalculatePrice();
     }
 
-    public void removeByProductId(UUID productId) {
+    public void removeByProductId(Long productId) {
         for (int i = 0; i < cartRecords.size(); i++) {
             if (cartRecords.get(i).getProduct().getId().equals(productId)) {
                 cartRecords.remove(i);

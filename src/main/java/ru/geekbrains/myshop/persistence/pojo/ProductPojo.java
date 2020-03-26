@@ -1,7 +1,7 @@
-package ru.geekbrains.myshop.persistence.persistence1.pojo;
+package ru.geekbrains.myshop.persistence.pojo;
 
 import lombok.Data;
-import ru.geekbrains.supershop.persistence.entities.enums.ProductCategory;
+import ru.geekbrains.myshop.persistence.entities.enums.ProductCategory;
 
 @Data
 public class ProductPojo {
