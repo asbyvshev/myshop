@@ -28,10 +28,7 @@ public class ProductController {
     @GetMapping("/{id}")
     public String getOneProduct(Model model, @PathVariable Long id) throws ProductNotFoundException {
 
-        // TODO ДЗ - утилита, которая будет проверять UUID
-
         model.addAttribute("product", productService.findOneById(id));
-//        System.out.println(productService.findOneById(id).getImages());
         return "product";
     }
 
