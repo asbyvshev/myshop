@@ -91,116 +91,116 @@
 
 -- CREATE DATABASE IF NOT EXISTS `geek_shop` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
--- use `geek_shop`;
+use `geek_shop`;
 
--- DROP TABLE IF EXISTS `image`;
+DROP TABLE IF EXISTS `image`;
 
--- CREATE TABLE `image` (
---   `id` int(11) NOT NULL AUTO_INCREMENT,
---   `name` varchar(255) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `image_id_uindex` (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `image_id_uindex` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- INSERT INTO `image` (id, name) VALUES ('1', 'apple.png');
--- INSERT INTO `image` (id, name) VALUES ('2', 'bread.png');
--- INSERT INTO `image` (id, name) VALUES ('3', 'cheese.png');
--- INSERT INTO `image` (id, name) VALUES ('4', 'donut.png');
--- INSERT INTO `image` (id, name) VALUES ('5', 'juice.png');
--- INSERT INTO `image` (id, name) VALUES ('6', 'lemonade.png');
--- INSERT INTO `image` (id, name) VALUES ('7', 'milk.png');
--- INSERT INTO `image` (id, name) VALUES ('8', 'tea.png');
--- INSERT INTO `image` (id, name) VALUES ('9', 'cart.png');
+INSERT INTO `image` (id, name) VALUES ('1', 'apple.png');
+INSERT INTO `image` (id, name) VALUES ('2', 'bread.png');
+INSERT INTO `image` (id, name) VALUES ('3', 'cheese.png');
+INSERT INTO `image` (id, name) VALUES ('4', 'donut.png');
+INSERT INTO `image` (id, name) VALUES ('5', 'juice.png');
+INSERT INTO `image` (id, name) VALUES ('6', 'lemonade.png');
+INSERT INTO `image` (id, name) VALUES ('7', 'milk.png');
+INSERT INTO `image` (id, name) VALUES ('8', 'tea.png');
+INSERT INTO `image` (id, name) VALUES ('9', 'cart.png');
 
--- DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `product`;
 
--- CREATE TABLE `product` (
---   `id` int(11) NOT NULL AUTO_INCREMENT,
---   `title` varchar(255) NOT NULL,
---   `description` varchar(255) DEFAULT NULL,
---   `price` double NOT NULL,
---   `added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
---   `available` tinyint(1) NOT NULL DEFAULT '1',
---   `image` int(11) NOT NULL,
---   `category` int(11) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `product_id_uindex` (`id`),
---   KEY `fk_product_image_idx` (`image`),
---   CONSTRAINT `fk_product_image` FOREIGN KEY (`image`) REFERENCES `image` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `price` double NOT NULL,
+  `added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `available` tinyint(1) NOT NULL DEFAULT '1',
+  `image` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `product_id_uindex` (`id`),
+  KEY `fk_product_image_idx` (`image`),
+  CONSTRAINT `fk_product_image` FOREIGN KEY (`image`) REFERENCES `image` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('1', 'Лимонад', null, 80, '2020-03-16 10:19:29.622000', true, '6', 0);
--- INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('2', 'Хлеб', null, 50, '2020-03-15 22:54:21.184000', true, '2', 1);
--- INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('3', 'Яблоки', null, 150, '2020-03-15 22:54:21.184000', true, '1', 1);
--- INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('4', 'Молоко', null, 100, '2020-03-15 22:54:21.184000', true, '7', 0);
--- INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('5', 'Сок', null, 120, '2020-03-16 10:19:29.622000', true, '5', 0);
--- INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('6', 'Чай', null, 50, '2020-03-16 10:19:29.622000', true, '8', 0);
--- INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('7', 'Пончики', null, 10, '2020-03-16 10:19:29.622000', true, '4', 1);
--- INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('8', 'Сыр', null, 200, '2020-03-15 22:54:21.184000', true, '3', 1);
+INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('1', 'Лимонад', null, 80, '2020-03-16 10:19:29.622000', true, '6', 0);
+INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('2', 'Хлеб', null, 50, '2020-03-15 22:54:21.184000', true, '2', 1);
+INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('3', 'Яблоки', null, 150, '2020-03-15 22:54:21.184000', true, '1', 1);
+INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('4', 'Молоко', null, 100, '2020-03-15 22:54:21.184000', true, '7', 0);
+INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('5', 'Сок', null, 120, '2020-03-16 10:19:29.622000', true, '5', 0);
+INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('6', 'Чай', null, 50, '2020-03-16 10:19:29.622000', true, '8', 0);
+INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('7', 'Пончики', null, 10, '2020-03-16 10:19:29.622000', true, '4', 1);
+INSERT INTO product (id, title, description, price, added, available, image, category) VALUES ('8', 'Сыр', null, 200, '2020-03-15 22:54:21.184000', true, '3', 1);
 
--- DROP TABLE IF EXISTS `shopuser`;
+DROP TABLE IF EXISTS `shopuser`;
 
--- CREATE TABLE `shopuser` (
---   `id` int(11) NOT NULL AUTO_INCREMENT,
---   `phone` varchar(255) NOT NULL,
---   `password` varchar(255) NOT NULL,
---   `email` varchar(255) DEFAULT NULL,
---   `role` varchar(255) NOT NULL,
---   `first_name` varchar(255) NOT NULL,
---   `last_name` varchar(255) DEFAULT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `shopuser_id_uindex` (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `shopuser` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `role` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `shopuser_id_uindex` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- INSERT INTO shopuser (id, phone, password, email, first_name, last_name, role) VALUES ('1', 'anonymous', 'anonymous', 'anonymous@supershop.com', 'anonymous', 'anonymous', 'ROLE_CUSTOMER');
--- INSERT INTO shopuser (id, phone, password, email, first_name, last_name, role) VALUES ('2', '11111111', '$2a$10$5rAOMKmVsh9.NlzXTLLbq.XwouGdg3dwohvb5/HDn692YfdrLthO2', 'admin@supershop.com', 'Admin', 'Admin','ROLE_ADMIN');
--- INSERT INTO shopuser (id, phone, password, email, first_name, last_name, role) VALUES ('3', '22222222', '$2a$10$5rAOMKmVsh9.NlzXTLLbq.XwouGdg3dwohvb5/HDn692YfdrLthO2', 'user@supershop.com', 'User', 'User', 'ROLE_ADMIN');
+INSERT INTO shopuser (id, phone, password, email, first_name, last_name, role) VALUES ('1', 'anonymous', 'anonymous', 'anonymous@supershop.com', 'anonymous', 'anonymous', 'ROLE_CUSTOMER');
+INSERT INTO shopuser (id, phone, password, email, first_name, last_name, role) VALUES ('2', '11111111', '$2a$10$5rAOMKmVsh9.NlzXTLLbq.XwouGdg3dwohvb5/HDn692YfdrLthO2', 'admin@supershop.com', 'Admin', 'Admin','ROLE_ADMIN');
+INSERT INTO shopuser (id, phone, password, email, first_name, last_name, role) VALUES ('3', '22222222', '$2a$10$5rAOMKmVsh9.NlzXTLLbq.XwouGdg3dwohvb5/HDn692YfdrLthO2', 'user@supershop.com', 'User', 'User', 'ROLE_ADMIN');
 
--- DROP TABLE IF EXISTS `purchase`;
---
--- CREATE TABLE `purchase` (
---   `id` int(11) NOT NULL AUTO_INCREMENT,
---   `price` double NOT NULL,
---   `address` varchar(255) NOT NULL,
---   `phone` varchar(255) NOT NULL,
---   `shopuser` int(11) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `purchase_id_uindex` (`id`),
---   UNIQUE KEY `purchase_phone_uindex` (`phone`),
---   KEY `fk_purchase_shopuser_idx` (`shopuser`),
---   CONSTRAINT `fk_purchase_shopuser` FOREIGN KEY (`shopuser`) REFERENCES `shopuser` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `purchase`;
 
--- DROP TABLE IF EXISTS `cart_record`;
+CREATE TABLE `purchase` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `price` double NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `shopuser` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `purchase_id_uindex` (`id`),
+  UNIQUE KEY `purchase_phone_uindex` (`phone`),
+  KEY `fk_purchase_shopuser_idx` (`shopuser`),
+  CONSTRAINT `fk_purchase_shopuser` FOREIGN KEY (`shopuser`) REFERENCES `shopuser` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- CREATE TABLE `cart_record` (
---   `id` int(11) NOT NULL AUTO_INCREMENT,
---   `quantity` int(11) NOT NULL DEFAULT '0',
---   `price` double NOT NULL DEFAULT '0',
---   `product` int(11) NOT NULL,
---   `purchase` int(11) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `cart_record_id_uindex` (`id`),
---   KEY `fk_cart_record_purchase_idx` (`purchase`),
---   KEY `fk_cart_record_product_idx` (`product`),
---   CONSTRAINT `fk_cart_record_product` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
---   CONSTRAINT `fk_cart_record_purchase` FOREIGN KEY (`purchase`) REFERENCES `purchase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `cart_record`;
 
--- DROP TABLE IF EXISTS `review`;
+CREATE TABLE `cart_record` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantity` int(11) NOT NULL DEFAULT '0',
+  `price` double NOT NULL DEFAULT '0',
+  `product` int(11) NOT NULL,
+  `purchase` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cart_record_id_uindex` (`id`),
+  KEY `fk_cart_record_purchase_idx` (`purchase`),
+  KEY `fk_cart_record_product_idx` (`product`),
+  CONSTRAINT `fk_cart_record_product` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_cart_record_purchase` FOREIGN KEY (`purchase`) REFERENCES `purchase` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- CREATE TABLE `review` (
---   `id` int(11) NOT NULL AUTO_INCREMENT,
---   `commentary` varchar(500) NOT NULL,
---   `shopuser` int(11) NOT NULL,
---   `product` int(11) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `id_UNIQUE` (`id`),
---   KEY `fk_review_shopuser_idx` (`shopuser`),
---   KEY `fk_review_product_idx` (`product`),
---   CONSTRAINT `fk_review_product` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
---   CONSTRAINT `fk_review_shopuser` FOREIGN KEY (`shopuser`) REFERENCES `shopuser` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `review`;
+
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `commentary` varchar(500) NOT NULL,
+  `shopuser` int(11) NOT NULL,
+  `product` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `fk_review_shopuser_idx` (`shopuser`),
+  KEY `fk_review_product_idx` (`product`),
+  CONSTRAINT `fk_review_product` FOREIGN KEY (`product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_review_shopuser` FOREIGN KEY (`shopuser`) REFERENCES `shopuser` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- DROP TABLE IF EXISTS `product_images`;
 
