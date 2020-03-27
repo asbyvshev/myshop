@@ -17,5 +17,7 @@ spring:
 
 files:
   storepath:
-    icons:  "C:\\Users\\serpentcross\\Desktop\\HOMEWORK\\uploads\\icons"
-    images: "C:\\Users\\serpentcross\\Desktop\\HOMEWORK\\uploads\\images"
+    icons:  "//Users//admin//Desktop//учеба//Spring//Spring2//HW//view//icons"
+    images: "//Users//admin//Desktop//учеба//Spring//Spring2//HW//view//images"
+
+
