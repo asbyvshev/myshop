@@ -1,7 +1,6 @@
 package ru.geekbrains.myshop.persistence.entities;
 
 import lombok.*;
-import ru.geekbrains.myshop.persistence.persistence1.entities.Product;
 import ru.geekbrains.myshop.persistence.entities.utils.PersistableEntity;
 
 import javax.persistence.Entity;
