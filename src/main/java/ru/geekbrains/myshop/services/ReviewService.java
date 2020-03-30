@@ -8,10 +8,12 @@ import ru.geekbrains.myshop.persistence.entities.Review;
 import ru.geekbrains.myshop.persistence.entities.Shopuser;
 import ru.geekbrains.myshop.persistence.repositories.ReviewRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class ReviewService {
 
@@ -25,9 +27,17 @@ public class ReviewService {
         return reviewRepository.findByShopuser(shopuser);
     }
 
-    @Transactional
+
     public void save(Review review) {
         reviewRepository.save(review);
     }
 
+    public Long moderate(Long id, String option) throws EntityNotFoundException {
+        Review review = reviewRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Oops! Review " + id + " wasn't found!")
+        );
+        review.setApproved(option.equals("approve"));
+        save(review);
+        return review.getProduct().getId();
+    }
 }
