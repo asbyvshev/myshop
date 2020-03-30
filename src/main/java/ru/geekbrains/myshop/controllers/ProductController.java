@@ -83,7 +83,6 @@ public class ProductController {
         reviewService.save(review);
 
         return "redirect:/products/" + product.getId();
-
     }
 
 }
