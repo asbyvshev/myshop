@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface ReviewRepository extends JpaRepository<Review, UUID> {
+public interface ReviewRepository extends JpaRepository<Review, Long> {
     Optional<List<Review>> findByProduct(Product product);
     Optional<List<Review>> findByShopuser(Shopuser shopuser);
+
 }
