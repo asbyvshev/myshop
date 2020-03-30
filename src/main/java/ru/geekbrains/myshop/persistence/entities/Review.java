@@ -25,4 +25,5 @@ public class Review extends PersistableEntity {
     @JoinColumn(name = "product")
     private Product product;
 
+    private boolean approved;
 }

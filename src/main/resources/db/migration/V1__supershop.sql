@@ -89,7 +89,7 @@
 
 -- -- Srcipts for MySqL
 
--- CREATE DATABASE IF NOT EXISTS `geek_shop` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+ CREATE DATABASE IF NOT EXISTS `geek_shop` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 use `geek_shop`;
 
@@ -194,6 +194,7 @@ CREATE TABLE `review` (
   `commentary` varchar(500) NOT NULL,
   `shopuser` int(11) NOT NULL,
   `product` int(11) NOT NULL,
+  `approved` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_review_shopuser_idx` (`shopuser`),
