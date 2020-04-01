@@ -69,15 +69,19 @@ public class ProductController {
     }
 
     @PostMapping("/reviews")
-    public String addReview(ReviewPojo reviewPojo, HttpSession session, Principal principal) throws ProductNotFoundException {
+    public String addReview(@RequestParam("image") MultipartFile image,
+                            ReviewPojo reviewPojo, HttpSession session,
+                            Principal principal) throws ProductNotFoundException, IOException {
 
         Product product = productService.findOneById(reviewPojo.getProductId());
         Shopuser shopuser = shopuserService.findByPhone(principal.getName());
+        Image img = imageService.uploadImage(image, product.getTitle() + shopuser.getPhone());
 
         Review review = Review.builder()
                 .commentary(reviewPojo.getCommentary())
                 .product(product)
                 .shopuser(shopuser)
+                .image(img)
                 .build();
 
         reviewService.save(review);
