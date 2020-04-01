@@ -3,8 +3,6 @@ package ru.geekbrains.myshop.services;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -17,14 +15,11 @@ import ru.geekbrains.myshop.utils.ValidatorsLong;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.charset.MalformedInputException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Objects;
-import java.util.UUID;
 
 @Slf4j
 @Service
@@ -41,6 +36,10 @@ public class ImageService {
 
     private String getImageForSpecificProduct(Long id) {
         return imageRepository.obtainImageNameByProductId(id);
+    }
+
+    private String getImage(Long id) {
+        return imageRepository.obtainImageNameById(id);
     }
 
     public BufferedImage loadFileAsResource(String id) {
@@ -107,4 +106,36 @@ public class ImageService {
         }
     }
 
+    public BufferedImage loadFile(String id) {
+        String imageName = null;
+
+        try {
+            Path filePath;
+
+            if (ValidatorsLong.isLongID(id)) {
+
+                imageName = getImage(Long.parseLong(id));
+
+                if (imageName != null) {
+                    filePath = IMAGES_STORE_PATH.resolve(imageName).normalize();
+                } else {
+                    imageName = "image_not_found.png";
+                    filePath = ICONS_STORE_PATH.resolve(imageName).normalize();
+                }
+            } else {
+                imageName = "image_not_found.png";
+                filePath = ICONS_STORE_PATH.resolve(imageName).normalize();
+            }
+
+            if (filePath != null) {
+                return ImageIO.read(new UrlResource(filePath.toUri()).getFile());
+            } else {
+                throw new IOException();
+            }
+
+        } catch (IOException ex) {
+            log.error("Error! Image {} file wasn't found!", imageName);
+            return null;
+        }
+    }
 }
