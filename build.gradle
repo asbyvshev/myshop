@@ -7,9 +7,9 @@ plugins {
 
 apply plugin: 'no.nils.wsdl2java'
 
-group = 'ru.geekbrains'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+//group = 'ru.geekbrains'
+//version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '1.8'
 
 configurations {
 	compile.exclude module: "spring-boot-starter-tomcat"
@@ -21,6 +21,8 @@ configurations {
 repositories {
 	mavenCentral()
 }
+
+def swaggerVersion = '2.8.0'
 
 dependencies {
 
@@ -42,6 +44,10 @@ dependencies {
 
 	testImplementation 'com.h2database:h2:1.4.197'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation "io.springfox:springfox-bean-validators:${swaggerVersion}"
+	implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
+	implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
 }
 
 wsdl2javaExt {

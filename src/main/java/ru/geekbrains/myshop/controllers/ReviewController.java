@@ -1,5 +1,7 @@
 package ru.geekbrains.myshop.controllers;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.MediaType;
@@ -19,16 +21,19 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/reviews")
 @RequiredArgsConstructor
+@Api(tags = "Набор методов для отзывов по продукту.")
 public class ReviewController {
     private final ReviewService reviewService;
     private final ImageService imageService;
 
+    @ApiOperation(value = "Модерация - одобрение/откланение.", response = String.class)
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String moderateReview(@PathVariable Long id, @RequestParam String option) throws EntityNotFoundException {
         return "redirect:/products/" + reviewService.moderate(id, option);
     }
 
+    @ApiOperation(value = "Отображение картинки прикрепленной к отзыву.")
     @GetMapping(value = "/images/{id}", produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody
     byte[] getImage(@PathVariable String id) throws IOException {

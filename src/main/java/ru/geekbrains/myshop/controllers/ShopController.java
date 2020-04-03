@@ -1,5 +1,8 @@
 package ru.geekbrains.myshop.controllers;
 
+import io.swagger.annotations.Api;
+
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.MediaType;
@@ -26,8 +29,8 @@ import java.util.ArrayList;
 
 @Controller
 @RequiredArgsConstructor
+@Api(tags = "Набор методов для онлайн-магазина.")
 public class ShopController {
-
 
     private final Cart cart;
     private final CaptchaGenerator captchaGenerator;
@@ -35,6 +38,7 @@ public class ShopController {
     private final ReviewService reviewService;
     private final ShopuserService shopuserService;
 
+    @ApiOperation(value = "Вывод списка продуктов.", response = String.class)
     @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
     public String index(Model model,
                         @RequestParam(required = false) Integer category,
@@ -55,15 +59,12 @@ public class ShopController {
         return "index";
     }
 
+    @ApiOperation(value = "Админ страница.", response = String.class)
     @GetMapping("/admin")
-    public String adminPage(Model model, @CookieValue(value = "data", required = false) String data, Principal principal) {
+    public String adminPage(Model model, Principal principal) {
 
         if (principal == null) {
             return "redirect:/";
-        }
-
-        if (data != null) {
-            System.out.println(data);
         }
 
         model.addAttribute("products", productService.findAll());
@@ -71,8 +72,9 @@ public class ShopController {
         return "admin";
     }
 
+    @ApiOperation(value = "Профиль пользователя.", response = String.class)
     @GetMapping("/profile")
-    public String profilePage(Model model, @CookieValue(value = "data", required = false) String data, Principal principal) {
+    public String profilePage(Model model, Principal principal) {
 
         if (principal == null) {
             return "redirect:/";
@@ -83,13 +85,10 @@ public class ShopController {
         model.addAttribute("reviews", reviewService.getReviewsByShopuser(shopuser).orElse(new ArrayList<>()));
         model.addAttribute("shopuser", shopuser);
 
-        if (data != null) {
-            System.out.println(data);
-        }
-
         return "profile";
     }
 
+    @ApiOperation(value = "Вывод изображения captcha.")
     @GetMapping(value = "/captcha", produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody
     byte[] captcha(HttpSession session) {
@@ -104,6 +103,7 @@ public class ShopController {
         }
     }
 
+    @ApiOperation(value = "Подтверждение заказа.", response = String.class)
     @PostMapping("/checkout")
     public String proceedToCheckout(String paymentId, Model model) {
 

@@ -1,5 +1,7 @@
 package ru.geekbrains.myshop.controllers;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.MediaType;
@@ -33,6 +35,7 @@ import java.util.UUID;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/products")
+@Api(tags = "Набор методов для витрины онлайн-магазина.")
 public class ProductController {
 
     private final ImageService imageService;
@@ -41,6 +44,7 @@ public class ProductController {
     private final ShopuserService shopuserService;
 
     @GetMapping("/{id}")
+    @ApiOperation(value = "Получить страницу с данными продукта.", response = String.class)
     public String getOneProduct(Model model, @PathVariable String id) throws ProductNotFoundException {
 
         Product product = productService.findOneById(Long.parseLong(id));
@@ -50,6 +54,7 @@ public class ProductController {
         return "product";
     }
 
+    @ApiOperation(value = "Загрузка изображения.", response = String.class)
     @GetMapping(value = "/images/{id}", produces = MediaType.IMAGE_PNG_VALUE)
     public @ResponseBody byte[] getImage(@PathVariable String id) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -62,13 +67,16 @@ public class ProductController {
         }
     }
 
+
     @PostMapping
+    @ApiOperation(value = "Добавить новый продукт на витрину.", response = String.class)
     public String addOne(@RequestParam("image") MultipartFile image, ProductPojo productPojo) throws IOException {
         Image img = imageService.uploadImage(image, productPojo.getTitle());
         return productService.save(productPojo, img);
     }
 
     @PostMapping("/reviews")
+    @ApiOperation(value = "Добавить новый отзыв о продукте.", response = String.class)
     public String addReview(@RequestParam("image") MultipartFile image,
                             ReviewPojo reviewPojo, HttpSession session,
                             Principal principal) throws ProductNotFoundException, IOException {
