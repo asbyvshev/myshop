@@ -1,19 +1,20 @@
 package ru.geekbrains.myshop.controllers;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
 import ru.geekbrains.myshop.beans.Cart;
 import ru.geekbrains.myshop.persistence.entities.Shopuser;
 import ru.geekbrains.myshop.services.ProductService;
 import ru.geekbrains.myshop.services.ReviewService;
 import ru.geekbrains.myshop.services.ShopuserService;
 import ru.geekbrains.myshop.utils.CaptchaGenerator;
+import ru.geekbrains.myshop.utils.Validators;
+import ru.geekbrains.paymentservice.Payment;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
@@ -101,5 +102,21 @@ public class ShopController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @PostMapping("/checkout")
+    public String proceedToCheckout(String paymentId, Model model) {
+
+        Payment payment = cart.getPayments()
+                .stream()
+                .filter(p -> p.getId() == Integer.valueOf(paymentId))
+                .collect(Validators.toSingleton());
+
+        cart.setPayment(payment);
+
+        model.addAttribute("cart", cart);
+
+        return "checkout";
+
     }
 }
