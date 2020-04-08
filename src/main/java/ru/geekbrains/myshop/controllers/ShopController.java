@@ -42,19 +42,12 @@ public class ShopController {
     @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
     public String index(Model model,
                         @RequestParam(required = false) Integer category,
-                        @RequestParam(required = false) Boolean available) {
+                        @RequestParam(required = false) Integer minPrice,
+                        @RequestParam(required = false) Integer maxPrice,
+                        @RequestParam(required = false) Boolean notAvailable) {
 
         model.addAttribute("cart", cart.getCartRecords());
-
-        if (category != null && available != null) {
-            model.addAttribute("products", productService.findAll(category,available));
-        } else if (category == null && available == null) {
-            model.addAttribute("products", productService.findAll());
-        } else if (category == null) {
-            model.addAttribute("products", productService.findAll(available));
-        } else {
-            model.addAttribute("products", productService.findAll(category));
-        }
+        model.addAttribute("products", productService.findAll(category, minPrice, maxPrice, notAvailable));
 
         return "index";
     }
@@ -63,9 +56,7 @@ public class ShopController {
     @GetMapping("/admin")
     public String adminPage(Model model, Principal principal) {
 
-        if (principal == null) {
-            return "redirect:/";
-        }
+        if (principal == null) { return "redirect:/"; }
 
         model.addAttribute("products", productService.findAll());
 
@@ -76,9 +67,7 @@ public class ShopController {
     @GetMapping("/profile")
     public String profilePage(Model model, Principal principal) {
 
-        if (principal == null) {
-            return "redirect:/";
-        }
+        if (principal == null) { return "redirect:/"; }
 
         Shopuser shopuser = shopuserService.findByPhone(principal.getName());
 
@@ -117,6 +106,5 @@ public class ShopController {
         model.addAttribute("cart", cart);
 
         return "checkout";
-
     }
 }

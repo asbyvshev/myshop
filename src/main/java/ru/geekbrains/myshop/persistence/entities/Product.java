@@ -55,7 +55,6 @@ public class Product extends PersistableEntity {
     private List<Image> images;
 
     @ApiModelProperty(reference = "product", value = "Список отзывов")
-    @OneToOne
     @OneToMany(mappedBy = "product")
     private List<Review> reviews;
 }
