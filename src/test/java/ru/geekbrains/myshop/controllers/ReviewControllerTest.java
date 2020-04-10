@@ -2,9 +2,10 @@ package ru.geekbrains.myshop.controllers;
 
 import org.junit.Before;
 import org.junit.Test;
-import ru.geekbrains.supershop.persistence.entities.Review;
-import ru.geekbrains.supershop.services.ReviewService;
-import ru.geekbrains.supershop.services.feign.clients.ShopFeignClient;
+import ru.geekbrains.myshop.persistence.entities.Review;
+import ru.geekbrains.myshop.services.ImageService;
+import ru.geekbrains.myshop.services.ReviewService;
+//import ru.geekbrains.myshop.services.feign.clients.ShopFeignClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,11 @@ public class ReviewControllerTest {
     @Before
     public void setUp() {
 
-        ShopFeignClient shopFeignClient = mock(ShopFeignClient.class);
+//        ShopFeignClient shopFeignClient = mock(ShopFeignClient.class);
         ReviewService reviewServiceMock = mock(ReviewService.class);
+        ImageService imageService = mock(ImageService.class);
 
-        reviewController = new ReviewController(shopFeignClient, reviewServiceMock);
+        reviewController = new ReviewController(reviewServiceMock, imageService);
 
         when(reviewServiceMock.getAll()).thenReturn(reviews);
 

@@ -40,4 +40,8 @@ public class ReviewService {
         save(review);
         return review.getProduct().getId();
     }
+// for test
+    public List<Review> getAll() {
+        return reviewRepository.findAll();
+    }
 }

@@ -12,8 +12,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.geekbrains.supershop.persistence.entities.Product;
-import ru.geekbrains.supershop.persistence.entities.enums.ProductCategory;
+import ru.geekbrains.myshop.persistence.entities.Product;
+import ru.geekbrains.myshop.persistence.entities.enums.ProductCategory;
+import ru.geekbrains.myshop.persistence.repositories.ProductRepository;
 
 import java.io.IOException;
 import java.util.List;

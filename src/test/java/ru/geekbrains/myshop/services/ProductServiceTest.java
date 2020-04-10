@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.geekbrains.supershop.persistence.entities.enums.ProductCategory;
-import ru.geekbrains.supershop.persistence.pojo.ProductPojo;
-import ru.geekbrains.supershop.services.feign.clients.ShopFeignClient;
+import ru.geekbrains.myshop.persistence.entities.enums.ProductCategory;
+import ru.geekbrains.myshop.persistence.pojo.ProductPojo;
+//import ru.geekbrains.myshop.services.feign.clients.ShopFeignClient;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,8 +20,8 @@ public class ProductServiceTest {
     @Autowired
     private ProductService productService;
 
-    @MockBean
-    private ShopFeignClient shopFeignClient;
+//    @MockBean
+//    private ShopFeignClient shopFeignClient;
 
     @Before
     public void setUp() {
@@ -40,7 +40,7 @@ public class ProductServiceTest {
 
     @Test
     public void testSomething() throws Exception {
-        assertEquals(1, productService.findAll(0).size());
+        assertEquals(1, productService.findAll().size());
     }
 
 }

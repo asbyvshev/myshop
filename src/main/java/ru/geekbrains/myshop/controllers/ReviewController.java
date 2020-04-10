@@ -2,13 +2,17 @@ package ru.geekbrains.myshop.controllers;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import ru.geekbrains.myshop.persistence.entities.Review;
 import ru.geekbrains.myshop.services.ImageService;
 import ru.geekbrains.myshop.services.ReviewService;
 
@@ -17,6 +21,7 @@ import javax.persistence.EntityNotFoundException;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/reviews")
@@ -46,4 +51,9 @@ public class ReviewController {
             return new byte[0];
         }
     }
+//    for test
+    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Review>> getAllReviews() {
+    return new ResponseEntity<>(reviewService.getAll(), HttpStatus.OK);
+}
 }

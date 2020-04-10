@@ -1,8 +1,11 @@
 package ru.geekbrains.myshop.persistence.pojo;
 
+import lombok.Builder;
 import lombok.Data;
+
 import ru.geekbrains.myshop.persistence.entities.enums.ProductCategory;
 
+@Builder
 @Data
 public class ProductPojo {
     private String title;

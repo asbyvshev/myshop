@@ -9,10 +9,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.geekbrains.supershop.persistence.entities.Review;
-import ru.geekbrains.supershop.services.ReviewService;
-import ru.geekbrains.supershop.services.ShopuserService;
-import ru.geekbrains.supershop.services.feign.clients.ShopFeignClient;
+import ru.geekbrains.myshop.persistence.entities.Review;
+import ru.geekbrains.myshop.services.ReviewService;
+import ru.geekbrains.myshop.services.ShopuserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +31,6 @@ public class ReviewControllerMVCTest {
 
     @MockBean
     private ReviewService reviewServiceMock;
-
-    @MockBean
-    private ShopFeignClient shopFeignClient;
 
     @MockBean
     private ShopuserService shopuserServiceMock;
