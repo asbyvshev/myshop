@@ -1,8 +1,8 @@
 package ru.geekbrains.myshop.controllers;
 
 import io.swagger.annotations.Api;
-
 import io.swagger.annotations.ApiOperation;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.MediaType;

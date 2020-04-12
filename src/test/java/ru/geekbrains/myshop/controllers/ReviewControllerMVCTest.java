@@ -3,13 +3,16 @@ package ru.geekbrains.myshop.controllers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+
 import ru.geekbrains.myshop.persistence.entities.Review;
+import ru.geekbrains.myshop.services.ImageService;
 import ru.geekbrains.myshop.services.ReviewService;
 import ru.geekbrains.myshop.services.ShopuserService;
 
@@ -33,7 +36,11 @@ public class ReviewControllerMVCTest {
     private ReviewService reviewServiceMock;
 
     @MockBean
+    private ImageService imageServiceMock;
+
+    @MockBean
     private ShopuserService shopuserServiceMock;
+
 
     @Before
     public void setUp() {

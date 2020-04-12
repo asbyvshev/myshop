@@ -67,7 +67,6 @@ public class ProductController {
         }
     }
 
-
     @PostMapping
     @ApiOperation(value = "Добавить новый продукт на витрину.", response = String.class)
     public String addOne(@RequestParam("image") MultipartFile image, ProductPojo productPojo) throws IOException {
@@ -96,5 +95,4 @@ public class ProductController {
 
         return "redirect:/products/" + product.getId();
     }
-
 }

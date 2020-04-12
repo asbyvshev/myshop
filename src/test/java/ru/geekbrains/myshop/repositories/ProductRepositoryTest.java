@@ -19,7 +19,7 @@ import ru.geekbrains.myshop.persistence.repositories.ProductRepository;
 import java.io.IOException;
 import java.util.List;
 
-@Ignore
+
 @DataJpaTest
 @RunWith(SpringRunner.class)
 public class ProductRepositoryTest {

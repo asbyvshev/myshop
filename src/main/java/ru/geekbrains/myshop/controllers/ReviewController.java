@@ -55,5 +55,5 @@ public class ReviewController {
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Review>> getAllReviews() {
     return new ResponseEntity<>(reviewService.getAll(), HttpStatus.OK);
-}
+    }
 }
