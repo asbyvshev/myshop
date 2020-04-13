@@ -27,7 +27,6 @@ public class ReviewService {
         return reviewRepository.findByShopuser(shopuser);
     }
 
-
     public void save(Review review) {
         reviewRepository.save(review);
     }

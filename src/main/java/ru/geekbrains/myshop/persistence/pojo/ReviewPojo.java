@@ -1,5 +1,6 @@
 package ru.geekbrains.myshop.persistence.pojo;
 
+
 import lombok.Data;
 
 import java.util.UUID;

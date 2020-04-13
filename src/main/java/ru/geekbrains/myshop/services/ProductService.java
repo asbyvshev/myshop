@@ -39,6 +39,9 @@ public class ProductService {
             () -> new ProductNotFoundException("Oops! Product " + id + " wasn't found!")
         );
     }
+    public Product findOneByTitle(String title) {
+        return productRepository.findByTitle(title);
+    }
 
     public List<Product> findAll(Integer category, Integer minPrice, Integer maxPrice, Boolean notAvailable) {
 

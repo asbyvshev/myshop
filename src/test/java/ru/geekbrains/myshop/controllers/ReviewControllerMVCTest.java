@@ -41,7 +41,6 @@ public class ReviewControllerMVCTest {
     @MockBean
     private ShopuserService shopuserServiceMock;
 
-
     @Before
     public void setUp() {
 
@@ -53,7 +52,6 @@ public class ReviewControllerMVCTest {
         }};
 
         given(reviewServiceMock.getAll()).willReturn(reviews);
-
     }
 
     @Test
@@ -64,8 +62,4 @@ public class ReviewControllerMVCTest {
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$", hasSize(4)));
     }
-
-
-
-
 }

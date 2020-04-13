@@ -74,6 +74,9 @@ public class ProductController {
         return productService.save(productPojo, img);
     }
 
+//    for test
+// public String addSome()
+
     @PostMapping("/reviews")
     @ApiOperation(value = "Добавить новый отзыв о продукте.", response = String.class)
     public String addReview(@RequestParam("image") MultipartFile image,

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProductRepository extends JpaRepository<Product,  Long> {
+    Product findByTitle(String title);
     List<Product> findAll();
     List<Product> findAllByCategory(ProductCategory category);
 }
