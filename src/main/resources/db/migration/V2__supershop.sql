@@ -8,3 +8,10 @@ ADD CONSTRAINT `fk_review_image`
   REFERENCES `geek_shop`.`image` (`id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE;
+
+DROP TABLE IF EXISTS `geek_shop`.`purchase_product`;
+
+--CREATE TABLE `geek_shop`.`purchase_product` (
+--    purchase UUID NOT NULL CONSTRAINT FK_purchase_product_purchase REFERENCES purchase,
+--    product UUID NOT NULL CONSTRAINT FK_purchase_product_product REFERENCES product
+--);
