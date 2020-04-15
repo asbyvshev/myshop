@@ -3,8 +3,7 @@ package ru.geekbrains.myshop.persistence.entities;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import ru.geekbrains.myshop.persistence.entities.utils.PersistableEntity;
 
@@ -14,14 +13,17 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ApiModel(description = "Entity-класс для хранения заказа.")
 public class Purchase extends PersistableEntity {
 
     @ApiModelProperty(required = true, value = "Цена")
     private Double price;
-    @ApiModelProperty(required = true, value = "Адрес")
-    private String address;
+    @ApiModelProperty(required = true, value = "Email")
+    private String email;
     @ApiModelProperty(required = true, value = "Номер телефона")
     private String phone;
 
@@ -34,4 +36,9 @@ public class Purchase extends PersistableEntity {
     @JoinColumn(name = "shopuser")
     private Shopuser shopuser;
 
+    @ManyToMany
+    @JoinTable(name="purchase_product", joinColumns=
+    @JoinColumn(name="purchase", referencedColumnName="id"), inverseJoinColumns=
+    @JoinColumn(name="product", referencedColumnName="id"))
+    private List<Product> products;
 }
