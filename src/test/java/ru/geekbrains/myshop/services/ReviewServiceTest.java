@@ -51,6 +51,7 @@ public class ReviewServiceTest {
 
     @Test
     public void getReviewsByProductTest(){
-       reviewService.getReviewsByProduct(productService.findOneByTitle("Пепси"));
+      List products = reviewService.getReviewsByProduct(productService.findOneByTitle("Пепси")).get();
+        assertEquals(1,products.size());
     }
 }
