@@ -24,10 +24,10 @@ spring:
 
 files:
   storepath:
-#    icons:  "//Users//admin//Desktop//учеба//Spring//Spring2//HW//view//icons"
-    icons:  "E:\\study\\General_Spring_Framework\\Spring2\\view\\icons"
-#    images: "//Users//admin//Desktop//учеба//Spring//Spring2//HW//view//images"
-    images: "E:\\study\\General_Spring_Framework\\Spring2\\view\\images"
+    icons:  "//Users//admin//Desktop//study//Spring//Spring2//HW//view//icons"
+#    icons:  "E:\\study\\General_Spring_Framework\\Spring2\\view\\icons"
+    images: "//Users//admin//Desktop//study//Spring//Spring2//HW//view//images"
+#    images: "E:\\study\\General_Spring_Framework\\Spring2\\view\\images"
 #    reviewImages: "E:\\E:\\study\\General_Spring_Framework\\Spring2\\view\\review_images"
 
 
