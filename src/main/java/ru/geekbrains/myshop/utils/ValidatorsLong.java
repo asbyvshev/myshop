@@ -1,18 +1,19 @@
 package ru.geekbrains.myshop.utils;
 
-import java.util.UUID;
+
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class Validators {
-    public static boolean isUUID(String string) {
+public class ValidatorsLong {
+    public static boolean isLongID(String string) {
         try {
-            UUID.fromString(string);
+            Long.parseLong(string);
             return true;
         } catch (Exception ex) {
             return false;
         }
     }
+
     public static <T> Collector<T, ?, T> toSingleton() {
         return Collectors.collectingAndThen(
                 Collectors.toList(),

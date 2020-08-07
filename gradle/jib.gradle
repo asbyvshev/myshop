@@ -1,0 +1,16 @@
+jib {
+    from {
+        image = "dokette/jdk8"
+    }
+    to {
+        image = 'localhost:5000/myshop/myshop'
+        tags = ['0.0.1']
+    }
+    container {
+        jvmFlags = ['-Xms1024m', '-Xdebug']
+        mainClass = "ru.geekbrains.myshop.ShopApplication"
+        ports = ['8080/tcp']
+    }
+}
+
+jib.to.image = "myDockerHub/${rootProject.name}"
